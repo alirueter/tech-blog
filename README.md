@@ -18,11 +18,11 @@ N/A
 ## [Usage](#Usage)
 N/A
 
-## License](#License)
+## [License](#License)
 
 [![License: ](https://img.shields.io/badge/License-)](https://opensource.org/licenses/)
 
-## Contributing](#Contributing)
+## [Contributing](#Contributing)
 N/A
 
 ## [Tests](#Tests)
