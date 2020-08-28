@@ -1,4 +1,4 @@
-(async function newPostHandler(event) {
+async function newPostHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('input[name="titleInput"]').value.trim();
@@ -21,6 +21,6 @@
     } else {
         alert(response.statusText)
     }
-})().catch(e => {console.error(e)})
+}
 
 document.querySelector('#submitBtn').addEventListener('click', newPostHandler);
