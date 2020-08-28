@@ -2,8 +2,17 @@
     <form id="signup-form">
         <h5>Sign Up</h5>
         <div>
-            {{> form}}
-            <button type="submit">Sign Up</button>
+            <div>
+                <label for="username-signup">username:</label>
+                <input type="text" id="username-signup" />
+            </div>
+            <div>
+                <label for="password-signup">password:</label>
+                <input type="password" id="password-signup" />
+            </div>
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
         </div>
         <div>
             <a href="/login">Log in instead</a>
