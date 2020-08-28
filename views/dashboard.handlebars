@@ -1,22 +1,16 @@
-<article>
-    <h5>
-        <a href="./dashboard.handlebars">Back to Dashboard</a>
-    </h5>
-    <form>
-        <h4>
-            Create New Post
-        </h4>
-        <div>
-            <div>
-                <label for="titleInput">Title</label>
-                <input type="text" name="titleInput">
-            </div>
-            <div>
-                <label for="contentInput">Blog Content</label>
-                <textarea name="contentInput"></textarea>
-            </div>
-            <button id="submitBtn" type="submit">Add Post</button>
-        </div>
-    </form>
-</article>
-<script src="../public/javascript/add-post.js"></script>
+{{#if posts.length}}
+<section>
+    <h2>Your Posts</h2>
+    <div>
+        {{#each posts as |post|}}
+            {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}">Edit Post</a>
+        {{/each}}
+    </div>
+</section>
+{{/if}}
+<div>
+    <button>
+        <a href="/dashboard/add-post">Add Post</a>
+    </button>
+</div>
