@@ -25,7 +25,7 @@ router.get('/', withAuth, (req, res) => {
         const posts = dbPostData.map(post => post.get({plain: true}));
         res.render('dashboard', {
             posts, 
-            loggedIn: req.session.loggedIn
+            loggedIn: true
         })
     })
     .catch(err => {
@@ -54,20 +54,28 @@ router.get('/edit/:id', withAuth, (req, res) => {
         ]
     })
     .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({plain: true}));
-        res.render('dashboard', {
-            posts,
-            loggedIn: req.session.loggedIn
-        });
+        if (dbPostData) {
+            const posts = dbPostData.get({plain: true});
+            res.render('edit-post', {
+                posts,
+                loggedIn: true
+            });
+        }
+        else {
+            res.status(404).end();
+        } 
+    })
+    .catch(err => {
+        res.status(500).json(err);
     });
 });
 
-router.get('/add-post', withAuth, (req, res) => {
-    if (req.session.loggedIn) {
-        res.render('add-post', {
-            loggedIn: true
-        });
-    }
-});
+// router.get('/add-post', withAuth, (req, res) => {
+//     if (req.session.loggedIn) {
+//         res.render('add-post', {
+//             loggedIn: true
+//         });
+//     }
+// });
 
 module.exports = router;
