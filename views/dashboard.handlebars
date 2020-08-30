@@ -1,14 +1,21 @@
 <section>
     <h3 class="font-weight-light text-info">Create New Post</h3>
-
     <form class="new-post-form font-weight-lighter">
-        <div>
-            <label for="post-title">Title</label>
-            <input type="text" id="post-title" name="post-title"/>
+        <div class="row">
+            <div class="col-1">
+                <label for="post-title">Title</label>
+            </div>
+            <div class="col-11">
+                <input type="text" id="post-title" name="post-title"/>
+            </div>
         </div>
-        <div>
-            <label for="post-content">Content</label>
-            <textarea id="post-content" name="post-content"></textarea>
+        <div class="row">
+            <div class="col-1">
+                <label for="post-content">Content</label>
+            </div>
+            <div class="col-11">
+                <textarea id="post-content" name="post-content"></textarea>
+            </div>
         </div>
         <button type="submit" class="btn btn-dark" id="submitBtn">Create</button>
     </form>
