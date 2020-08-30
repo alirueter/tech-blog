@@ -1,11 +1,13 @@
+
+<h2 class="text-center text-info font-weight-light">Blogs</h2>
 <ol class="post-list">
     {{#each posts as |post|}}
     <li>
         <article class="post">
-        <div class="title">
+        <div class="title font-weight-light">
             {{post.title}}
         </div>
-        <div class="meta">
+        <div class="meta font-weight-lighter font-italic">
             {{post.content}}
             |
             <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>

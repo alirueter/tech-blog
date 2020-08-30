@@ -6,28 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Tech Blog</title>
   {{!-- ADD STYLESHEET - USE BOOTSTRAP OR MATERIALIZE?? --}}
-  {{!-- <link rel="stylesheet" href="/stylesheets/style.css"> --}}
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
 <body>
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">The Tech Blog</a>
-      </h1>
-      <nav>
-          {{#if loggedIn}}
-          <a href="/dashboard">Dashboard</a>
-          <button id="logout">Logout</button>
-          {{else}}
-          <a href="/login">Login</a>
-          {{/if}}
+      <nav class="navbar navbar-dark bg-dark">
+        <h1>
+          <a href="/" class="navbar-brand">The Tech Blog</a>
+        </h1>
+        {{#if loggedIn}}
+        <a href="/dashboard" class="nav-link text-white">Dashboard</a>
+        <button id="logout" class="btn btn-info">Logout</button>
+        {{else}}
+        <button id="login" class="btn btn-info"><a href="/login" class="text-white">Login</a></button>
+        {{/if}}
       </nav>
     </header>
-    <main>
+    <main class="ml-3">
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="fixed-bottom text-center">
       Thanks for visiting!
     </footer>
   </div>
