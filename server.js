@@ -36,6 +36,6 @@ app.use(require('./controllers'));
 
 app.disable('etag');
 
-sequelize.sync({force: false}).then(() => {
+sequelize.sync({force: true}).then(() => {
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
