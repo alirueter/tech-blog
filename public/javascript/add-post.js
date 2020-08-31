@@ -17,10 +17,19 @@ async function newPostHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/dashboard')
-    } else {
+        document.location.replace('/dashboard');
+    } 
+    else {
         alert(response.statusText)
     }
 }
 
+function showNewPost() {
+    const newPostForm = document.querySelector("#create-new-post");
+    newPostForm.style.display = "block";
+    const newPostBtn = document.querySelector("#newPostBtn");
+    newPostBtn.style.display = "none";
+}
+
 document.querySelector('.new-post-form').addEventListener('submit', newPostHandler);
+document.querySelector('#newPostBtn').addEventListener('click', showNewPost);

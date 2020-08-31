@@ -2,7 +2,7 @@
     <h5>
         <a href="/dashboard">Back to Dashboard</a>
     </h5>
-    <form id="edit-form">
+    <form id="edit-form" class="edit-post-form">
         <h4>Edit Post</h4>
         <div>
             <div>
@@ -18,5 +18,8 @@
         </div>
     </form>
 </article>
+
+{{> comments post.comments}}
+
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>

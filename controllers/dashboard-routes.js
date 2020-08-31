@@ -12,12 +12,10 @@ router.get('/', withAuth, (req, res) => {
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: [
-                    {
-                        model: User,
-                        attributes: ['username']
-                    }
-                ]
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
             }
         ]
     })
@@ -25,7 +23,8 @@ router.get('/', withAuth, (req, res) => {
         const posts = dbPostData.map(post => post.get({plain: true}));
         res.render('dashboard', {
             posts, 
-            loggedIn: true
+            loggedIn: true,
+            username: req.session.username
         })
     })
     .catch(err => {
@@ -50,32 +49,30 @@ router.get('/edit/:id', withAuth, (req, res) => {
                         attributes: ['username']
                     }
                 ]
+            },
+            {
+                model: User,
+                attributes: ['username']
             }
         ]
     })
     .then(dbPostData => {
-        if (dbPostData) {
-            const posts = dbPostData.get({plain: true});
-            res.render('edit-post', {
-                posts,
-                loggedIn: true
-            });
+        if (!dbPostData) {
+            res.status(404).json({message: 'No post found with this id'});
+            return;
         }
-        else {
-            res.status(404).end();
-        } 
+
+        const post = dbPostData.get({plain: true});
+
+        res.render('edit-post', {
+            post, 
+            loggedIn: req.session.loggedIn,
+            username: req.session.username
+        });
     })
     .catch(err => {
         res.status(500).json(err);
     });
 });
-
-// router.get('/add-post', withAuth, (req, res) => {
-//     if (req.session.loggedIn) {
-//         res.render('add-post', {
-//             loggedIn: true
-//         });
-//     }
-// });
 
 module.exports = router;

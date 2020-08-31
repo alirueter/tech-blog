@@ -121,7 +121,7 @@ router.post('/login', (req, res) => {
     .then(dbUserData => {
         if (!dbUserData) {
             res.status(400).json({message: 'No user found with this username'});
-            return
+            return;
         }
 
         const validPassword = dbUserData.checkPassword(req.body.password);

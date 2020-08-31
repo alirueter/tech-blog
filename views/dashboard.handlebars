@@ -1,6 +1,6 @@
 <section>
     <h3 class="font-weight-light text-info">Create New Post</h3>
-    <form class="new-post-form font-weight-lighter">
+    <form id="create-new-post" class="new-post-form font-weight-lighter">
         <div class="row">
             <div class="col-1">
                 <label for="post-title">Title</label>
@@ -14,24 +14,24 @@
                 <label for="post-content">Content</label>
             </div>
             <div class="col-11">
-                <textarea id="post-content" name="post-content"></textarea>
+                <textarea id="post-content" class="new-post-content" name="post-content"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn btn-dark" id="submitBtn">Create</button>
+        <button type="submit" class="btn btn-dark" id="newPostBtn">Create</button>
     </form>
 </section>
 
 {{#if posts.length}}
 <section>
     <h2>Your Posts</h2>
-    <ol>
+    <ul class="post-list">
         {{#each posts as |post|}}
         <li>
             {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}">Edit Post</a>
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit/Delete Post</a>
         </li>
         {{/each}}
-    </ol>
+    </ul>
 </section>
 {{/if}}
 
