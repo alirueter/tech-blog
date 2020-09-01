@@ -1,6 +1,6 @@
 <article>
     <h5>
-        <a href="/dashboard">Back to Dashboard</a>
+        <a href="/dashboard" class="text-info">Back to Dashboard</a>
     </h5>
     <form id="edit-form" class="edit-post-form">
         <h4>Edit Post</h4>
@@ -13,8 +13,8 @@
                 <label for="contentInput">Blog Content:</label>
                 <textarea name="contentInput">{{post.content}}</textarea>
             </div>
-            <button type="submit">Save Post</button>
-            <button type="button" id="deleteBtn">Delete Post</button>
+            <button type="submit" class="btn btn-dark">Save Post</button>
+            <button type="button" id="deleteBtn" class="btn btn-secondary">Delete Post</button>
         </div>
     </form>
 </article>

@@ -1,30 +1,40 @@
 const router = require('express').Router();
 const {User, Post, Comment} = require('../models');
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection');
 
 router.get('/', withAuth, (req, res) => {
-    Post.findAll({
-        where: {
-            user_id: req.session.user_id
-        },
-        attributes: ['id', 'title', 'content', 'created_at'],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-        ]
-    })
+    Post.findAll(
+    // NEED TO FIGURE OUT HOW TO MAKE IT FILTER BY USER, BELOW CODE ISN'T WORKING
+    //     {
+    //     where: {
+    //         user_id: req.session.user_id
+    //     },
+    //     attributes: ['id', 'title', 'content', 'created_at'],
+    //     include: [
+    //         {
+    //             model: User,
+    //             attributes: ['username']
+    //         },
+    //         {
+    //             model: Comment,
+    //             attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+    //             include: {
+    //                 model: User,
+    //                 attributes: ['username']
+    //             }
+    //         }
+    //     ]
+    // }
+    )
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({plain: true}));
+        console.log("Posts for dashboard")
+        console.log(posts)
         res.render('dashboard', {
             posts, 
-            loggedIn: true,
-            username: req.session.username
+            loggedIn: true
+            //username: req.session.username
         })
     })
     .catch(err => {
